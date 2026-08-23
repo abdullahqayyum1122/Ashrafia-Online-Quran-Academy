@@ -1,16 +1,1217 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My Website</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Quran & Sunnah Academy</title>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f2f7f3;
+    color:#222;
+}
+
+header{
+    background:#14532d;
+    color:white;
+    text-align:center;
+    padding:28px 15px;
+}
+
+header h1{
+    margin:0;
+    font-size:30px;
+}
+
+header p{
+    margin:8px 0;
+}
+
+.language{
+    background:white;
+    text-align:center;
+    padding:12px;
+}
+
+button{
+    cursor:pointer;
+}
+
+.language button,
+.action{
+    background:#14532d;
+    color:white;
+    border:0;
+    padding:12px 20px;
+    margin:5px;
+    border-radius:8px;
+    font-size:15px;
+}
+
+.language button:hover,
+.action:hover{
+    background:#0b3d20;
+}
+
+nav{
+    background:#0b3d20;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    padding:8px;
+    position:sticky;
+    top:0;
+    z-index:10;
+}
+
+nav button{
+    background:transparent;
+    border:0;
+    color:white;
+    padding:12px 15px;
+    font-size:15px;
+}
+
+nav button:hover{
+    background:#1f6b3d;
+    border-radius:7px;
+}
+
+.page{
+    display:none;
+    padding:25px 15px;
+    text-align:center;
+}
+
+.page.active{
+    display:block;
+}
+
+.card{
+    background:white;
+    max-width:520px;
+    margin:18px auto;
+    padding:23px;
+    border-radius:16px;
+    box-shadow:0 3px 12px #ccc;
+}
+
+.course{
+    border-left:5px solid #14532d;
+}
+
+input,
+select{
+    width:92%;
+    padding:12px;
+    margin:7px;
+    border:1px solid #aaa;
+    border-radius:7px;
+}
+
+.message{
+    font-weight:bold;
+    margin-top:15px;
+}
+
+footer{
+    background:#14532d;
+    color:white;
+    text-align:center;
+    padding:20px;
+    margin-top:25px;
+}
+
+.urdu{
+    direction:rtl;
+}
+
+.small{
+    color:#666;
+    font-size:14px;
+}
+
+@media(max-width:600px){
+
+    header h1{
+        font-size:24px;
+    }
+
+    nav button{
+        font-size:13px;
+        padding:9px;
+    }
+
+    .card{
+        margin:14px 5px;
+    }
+}
+</style>
 </head>
 
 <body>
 
-    <h1>Welcome to My Website</h1>
+<!-- HEADER -->
 
-    <p>Ye meri pehli website hai!</p>
+<header>
 
-    <button>Click Me</button>
+<h1>Quran & Sunnah Academy</h1>
+
+<p id="subtitle">
+Learn Quran, Hadith & Islamic Studies
+</p>
+
+<p id="teacher">
+Teacher: Ali Muhammad
+</p>
+
+</header>
+
+
+<!-- LANGUAGE -->
+
+<div class="language">
+
+<button onclick="setEnglish()">English</button>
+
+<button onclick="setUrdu()">اردو</button>
+
+</div>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+<button onclick="showPage('home')">
+🏠 <span id="navHome">Home</span>
+</button>
+
+<button onclick="showPage('classes')">
+📚 <span id="navClasses">Classes</span>
+</button>
+
+<button onclick="showPage('register')">
+📝 <span id="navRegister">Register</span>
+</button>
+
+<button onclick="showPage('login')">
+🔐 <span id="navLogin">Login</span>
+</button>
+
+<button onclick="showPage('dashboard')">
+👤 <span id="navDashboard">Dashboard</span>
+</button>
+
+<button onclick="showPage('admin')">
+👨‍💼 <span id="navAdmin">Admin</span>
+</button>
+
+<button onclick="showPage('contact')">
+📞 <span id="navContact">Contact</span>
+</button>
+
+</nav>
+
+
+<!-- HOME -->
+
+<section id="home" class="page active">
+
+<div class="card">
+
+<h2 id="welcome">
+Assalamu Alaikum! 🕌
+</h2>
+
+<p id="intro">
+Welcome to Quran & Sunnah Academy.
+</p>
+
+<p id="intro2">
+Learn Islamic knowledge in an easy and friendly way.
+</p>
+
+<p>
+<b id="teacherLabel">Teacher:</b>
+Ali Muhammad
+</p>
+
+<button class="action"
+onclick="showPage('classes')">
+
+📚 View Classes
+
+</button>
+
+<button class="action"
+onclick="showPage('register')">
+
+📝 Register Now
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- CLASSES -->
+
+<section id="classes" class="page">
+
+<h2 id="classesTitle">
+Our Classes 📚
+</h2>
+
+
+<div class="card course">
+
+<h3 id="quranTitle">
+📖 Quran Classes
+</h3>
+
+<p id="quranText">
+Learn Quran reading and basic understanding.
+</p>
+
+<button class="action"
+onclick="selectCourse('Quran Classes')">
+
+Join Quran Class
+
+</button>
+
+</div>
+
+
+<div class="card course">
+
+<h3 id="islamicTitle">
+🕌 Islamic Studies
+</h3>
+
+<p id="islamicText">
+Learn important Islamic teachings and history.
+</p>
+
+<button class="action"
+onclick="selectCourse('Islamic Studies')">
+
+Join Islamic Studies
+
+</button>
+
+</div>
+
+
+<div class="card course">
+
+<h3 id="hadithTitle">
+📜 Hadith Classes
+</h3>
+
+<p id="hadithText">
+Learn Hadith and their meanings.
+</p>
+
+<button class="action"
+onclick="selectCourse('Hadith Classes')">
+
+Join Hadith Class
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- REGISTRATION -->
+
+<section id="register" class="page">
+
+<h2 id="registerTitle">
+📝 Student Registration
+</h2>
+
+<div class="card">
+
+<input
+id="studentName"
+type="text"
+placeholder="Your Name"
+>
+
+<input
+id="studentAge"
+type="number"
+placeholder="Your Age"
+>
+
+<select id="course">
+
+<option value="">
+Select Course
+</option>
+
+<option>
+Quran Classes
+</option>
+
+<option>
+Islamic Studies
+</option>
+
+<option>
+Hadith Classes
+</option>
+
+</select>
+
+<input
+id="phone"
+type="text"
+placeholder="WhatsApp / Phone"
+>
+
+<input
+id="email"
+type="email"
+placeholder="Email (Optional)"
+>
+
+<br>
+
+<button class="action"
+onclick="registerStudent()">
+
+Submit Registration
+
+</button>
+
+<p
+id="registerMessage"
+class="message">
+</p>
+
+</div>
+
+</section>
+
+
+<!-- LOGIN -->
+
+<section id="login" class="page">
+
+<h2>
+🔐 Student Login
+</h2>
+
+<div class="card">
+
+<input
+id="loginName"
+type="text"
+placeholder="Registered Name"
+>
+
+<input
+id="loginPhone"
+type="text"
+placeholder="Registered Phone"
+>
+
+<button
+class="action"
+onclick="studentLogin()">
+
+Login
+
+</button>
+
+<p
+id="loginMessage"
+class="message">
+</p>
+
+</div>
+
+</section>
+
+
+<!-- DASHBOARD -->
+
+<section id="dashboard" class="page">
+
+<h2>
+👤 Student Dashboard
+</h2>
+
+<div
+class="card"
+id="dashboardContent">
+
+<p>
+Please register or login first.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- ADMIN -->
+
+<section id="admin" class="page">
+
+<h2>
+👨‍💼 Teacher / Admin Panel
+</h2>
+
+<div class="card">
+
+<p class="small">
+Demo panel: registrations are stored only in this browser.
+</p>
+
+<button
+class="action"
+onclick="loadStudents()">
+
+View Students
+
+</button>
+
+<button
+class="action"
+onclick="clearStudents()">
+
+Clear Demo Data
+
+</button>
+
+<div id="studentList">
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section id="contact" class="page">
+
+<h2 id="contactTitle">
+📞 Contact Us
+</h2>
+
+<div class="card">
+
+<h3>
+Ali Muhammad
+</h3>
+
+<p id="contactText">
+For information about classes, contact the academy.
+</p>
+
+<p>
+<b>
+Official WhatsApp:
+</b>
+Add academy's public WhatsApp number here.
+</p>
+
+<button
+class="action"
+onclick="contactMessage()">
+
+💬 WhatsApp / Contact
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<p id="footerText">
+© 2026 Quran & Sunnah Academy
+</p>
+
+<p>
+Teacher: Ali Muhammad
+</p>
+
+</footer>
+
+
+<script>
+
+
+// PAGE SYSTEM
+
+function showPage(page){
+
+    document
+    .querySelectorAll(".page")
+    .forEach(function(section){
+
+        section.classList.remove("active");
+
+    });
+
+    document
+    .getElementById(page)
+    .classList.add("active");
+
+    if(page === "dashboard"){
+        updateDashboard();
+    }
+
+    if(page === "admin"){
+        loadStudents();
+    }
+
+    window.scrollTo(0,0);
+}
+
+
+// COURSE BUTTONS
+
+function selectCourse(courseName){
+
+    showPage("register");
+
+    document
+    .getElementById("course")
+    .value = courseName;
+
+    document
+    .getElementById("studentName")
+    .focus();
+}
+
+
+// REGISTRATION
+
+function registerStudent(){
+
+    let name =
+    document
+    .getElementById("studentName")
+    .value
+    .trim();
+
+    let age =
+    document
+    .getElementById("studentAge")
+    .value
+    .trim();
+
+    let course =
+    document
+    .getElementById("course")
+    .value;
+
+    let phone =
+    document
+    .getElementById("phone")
+    .value
+    .trim();
+
+    let email =
+    document
+    .getElementById("email")
+    .value
+    .trim();
+
+
+    if(
+        name === "" ||
+        age === "" ||
+        course === "" ||
+        phone === ""
+    ){
+
+        document
+        .getElementById("registerMessage")
+        .innerHTML =
+        "Please fill all required information.";
+
+        return;
+    }
+
+
+    let students =
+    JSON.parse(
+        localStorage.getItem(
+            "academyStudents"
+        )
+    ) || [];
+
+
+    let student = {
+
+        name:name,
+        age:age,
+        course:course,
+        phone:phone,
+        email:email,
+        date:new Date().toLocaleString()
+
+    };
+
+
+    students.push(student);
+
+
+    localStorage.setItem(
+        "academyStudents",
+        JSON.stringify(students)
+    );
+
+
+    localStorage.setItem(
+        "currentStudent",
+        JSON.stringify(student)
+    );
+
+
+    document
+    .getElementById("registerMessage")
+    .innerHTML =
+    "Registration successful!";
+
+
+    document
+    .getElementById("studentName")
+    .value="";
+
+    document
+    .getElementById("studentAge")
+    .value="";
+
+    document
+    .getElementById("course")
+    .value="";
+
+    document
+    .getElementById("phone")
+    .value="";
+
+    document
+    .getElementById("email")
+    .value="";
+}
+
+
+// LOGIN
+
+function studentLogin(){
+
+    let name =
+    document
+    .getElementById("loginName")
+    .value
+    .trim();
+
+    let phone =
+    document
+    .getElementById("loginPhone")
+    .value
+    .trim();
+
+
+    let students =
+    JSON.parse(
+        localStorage.getItem(
+            "academyStudents"
+        )
+    ) || [];
+
+
+    let student =
+    students.find(function(s){
+
+        return
+        s.name.toLowerCase()
+        === name.toLowerCase()
+        &&
+        s.phone === phone;
+
+    });
+
+
+    if(student){
+
+        localStorage.setItem(
+            "currentStudent",
+            JSON.stringify(student)
+        );
+
+        document
+        .getElementById("loginMessage")
+        .innerHTML =
+        "Login successful!";
+
+        showPage("dashboard");
+
+    }else{
+
+        document
+        .getElementById("loginMessage")
+        .innerHTML =
+        "Student not found.";
+
+    }
+}
+
+
+// DASHBOARD
+
+function updateDashboard(){
+
+    let student =
+    JSON.parse(
+        localStorage.getItem(
+            "currentStudent"
+        )
+    );
+
+
+    let box =
+    document
+    .getElementById(
+        "dashboardContent"
+    );
+
+
+    if(!student){
+
+        box.innerHTML =
+        "<p>Please register or login first.</p>";
+
+        return;
+    }
+
+
+    box.innerHTML =
+
+    "<h3>Welcome, "
+    + student.name
+    + " 👋</h3>"
+
+    +
+
+    "<p><b>Age:</b> "
+    + student.age
+    + "</p>"
+
+    +
+
+    "<p><b>Course:</b> "
+    + student.course
+    + "</p>"
+
+    +
+
+    "<p><b>Phone:</b> "
+    + student.phone
+    + "</p>"
+
+    +
+
+    "<p><b>Teacher:</b> Ali Muhammad</p>"
+
+    +
+
+    "<button class='action' onclick='logout()'>Logout</button>";
+
+}
+
+
+// LOGOUT
+
+function logout(){
+
+    localStorage.removeItem(
+        "currentStudent"
+    );
+
+    showPage("home");
+}
+
+
+// ADMIN
+
+function loadStudents(){
+
+    let students =
+    JSON.parse(
+        localStorage.getItem(
+            "academyStudents"
+        )
+    ) || [];
+
+
+    let list =
+    document.getElementById(
+        "studentList"
+    );
+
+
+    if(students.length === 0){
+
+        list.innerHTML =
+        "<p>No students registered yet.</p>";
+
+        return;
+    }
+
+
+    let html =
+    "<h3>Registered Students</h3>";
+
+
+    students.forEach(
+    function(student,index){
+
+        html +=
+
+        "<div class='card'>"
+
+        +
+
+        "<b>"
+        + (index + 1)
+        + ". "
+        + student.name
+        + "</b>"
+
+        +
+
+        "<p>Age: "
+        + student.age
+        + "</p>"
+
+        +
+
+        "<p>Course: "
+        + student.course
+        + "</p>"
+
+        +
+
+        "<p>Phone: "
+        + student.phone
+        + "</p>"
+
+        +
+
+        "<p>Email: "
+        + (student.email || "Not provided")
+        + "</p>"
+
+        +
+
+        "<p class='small'>"
+        + student.date
+        + "</p>"
+
+        +
+
+        "</div>";
+
+    });
+
+
+    list.innerHTML = html;
+}
+
+
+// CLEAR DEMO DATA
+
+function clearStudents(){
+
+    if(
+        confirm(
+            "Delete all demo registrations?"
+        )
+    ){
+
+        localStorage.removeItem(
+            "academyStudents"
+        );
+
+        localStorage.removeItem(
+            "currentStudent"
+        );
+
+        loadStudents();
+
+    }
+}
+
+
+// CONTACT
+
+function contactMessage(){
+
+    alert(
+        "Please add the academy's official WhatsApp number to the website."
+    );
+
+}
+
+
+// ENGLISH
+
+function setEnglish(){
+
+    document.body
+    .classList
+    .remove("urdu");
+
+
+    document.getElementById("subtitle")
+    .innerHTML =
+    "Learn Quran, Hadith & Islamic Studies";
+
+
+    document.getElementById("teacher")
+    .innerHTML =
+    "Teacher: Ali Muhammad";
+
+
+    document.getElementById("navHome")
+    .innerHTML="Home";
+
+    document.getElementById("navClasses")
+    .innerHTML="Classes";
+
+    document.getElementById("navRegister")
+    .innerHTML="Register";
+
+    document.getElementById("navLogin")
+    .innerHTML="Login";
+
+    document.getElementById("navDashboard")
+    .innerHTML="Dashboard";
+
+    document.getElementById("navAdmin")
+    .innerHTML="Admin";
+
+    document.getElementById("navContact")
+    .innerHTML="Contact";
+
+
+    document.getElementById("welcome")
+    .innerHTML =
+    "Assalamu Alaikum! 🕌";
+
+
+    document.getElementById("intro")
+    .innerHTML =
+    "Welcome to Quran & Sunnah Academy.";
+
+
+    document.getElementById("intro2")
+    .innerHTML =
+    "Learn Islamic knowledge in an easy and friendly way.";
+
+
+    document.getElementById("teacherLabel")
+    .innerHTML =
+    "Teacher:";
+
+
+    document.getElementById("classesTitle")
+    .innerHTML =
+    "Our Classes 📚";
+
+
+    document.getElementById("quranTitle")
+    .innerHTML =
+    "📖 Quran Classes";
+
+
+    document.getElementById("quranText")
+    .innerHTML =
+    "Learn Quran reading and basic understanding.";
+
+
+    document.getElementById("islamicTitle")
+    .innerHTML =
+    "🕌 Islamic Studies";
+
+
+    document.getElementById("islamicText")
+    .innerHTML =
+    "Learn important Islamic teachings and history.";
+
+
+    document.getElementById("hadithTitle")
+    .innerHTML =
+    "📜 Hadith Classes";
+
+
+    document.getElementById("hadithText")
+    .innerHTML =
+    "Learn Hadith and their meanings.";
+
+
+    document.getElementById("registerTitle")
+    .innerHTML =
+    "Student Registration";
+
+
+    document.getElementById("contactTitle")
+    .innerHTML =
+    "📞 Contact Us";
+
+
+    document.getElementById("contactText")
+    .innerHTML =
+    "For information about classes, contact the academy.";
+
+
+    document.getElementById("footerText")
+    .innerHTML =
+    "© 2026 Quran & Sunnah Academy";
+}
+
+
+// URDU
+
+function setUrdu(){
+
+    document.body
+    .classList
+    .add("urdu");
+
+
+    document.getElementById("subtitle")
+    .innerHTML =
+    "قرآن، حدیث اور اسلامیات سیکھیں";
+
+
+    document.getElementById("teacher")
+    .innerHTML =
+    "استاد: علی محمد";
+
+
+    document.getElementById("navHome")
+    .innerHTML="ہوم";
+
+    document.getElementById("navClasses")
+    .innerHTML="کلاسز";
+
+    document.getElementById("navRegister")
+    .innerHTML="رجسٹریشن";
+
+    document.getElementById("navLogin")
+    .innerHTML="لاگ اِن";
+
+    document.getElementById("navDashboard")
+    .innerHTML="ڈیش بورڈ";
+
+    document.getElementById("navAdmin")
+    .innerHTML="ایڈمن";
+
+    document.getElementById("navContact")
+    .innerHTML="رابطہ";
+
+
+    document.getElementById("welcome")
+    .innerHTML =
+    "السلام علیکم! 🕌";
+
+
+    document.getElementById("intro")
+    .innerHTML =
+    "قرآن و سنت اکیڈمی میں خوش آمدید۔";
+
+
+    document.getElementById("intro2")
+    .innerHTML =
+    "آسان اور دوستانہ انداز میں اسلامی تعلیم حاصل کریں۔";
+
+
+    document.getElementById("teacherLabel")
+    .innerHTML =
+    "استاد:";
+
+
+    document.getElementById("classesTitle")
+    .innerHTML =
+    "ہماری کلاسز 📚";
+
+
+    document.getElementById("quranTitle")
+    .innerHTML =
+    "📖 قرآن کلاسز";
+
+
+    document.getElementById("quranText")
+    .innerHTML =
+    "قرآن پاک پڑھنا اور بنیادی سمجھ حاصل کریں۔";
+
+
+    document.getElementById("islamicTitle")
+    .innerHTML =
+    "🕌 اسلامیات";
+
+
+    document.getElementById("islamicText")
+    .innerHTML =
+    "اسلامی تعلیمات اور اسلامی تاریخ کے بارے میں سیکھیں۔";
+
+
+    document.getElementById("hadithTitle")
+    .innerHTML =
+    "📜 حدیث کلاسز";
+
+
+    document.getElementById("hadithText")
+    .innerHTML =
+    "احادیث اور ان کے معانی کے بارے میں سیکھیں۔";
+
+
+    document.getElementById("registerTitle")
+    .innerHTML =
+    "طلبہ کی رجسٹریشن";
+
+
+    document.getElementById("contactTitle")
+    .innerHTML =
+    "📞 ہم سے رابطہ کریں";
+
+
+    document.getElementById("contactText")
+    .innerHTML =
+    "کلاسز کے بارے میں معلومات کے لیے اکیڈمی سے رابطہ کریں۔";
+
+
+    document.getElementById("footerText")
+    .innerHTML =
+    "© 2026 قرآن و سنت اکیڈمی";
+}
+
+</script>
 
 </body>
 </html>
